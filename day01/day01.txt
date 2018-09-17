@@ -1,0 +1,21 @@
+1沈
+shenyg@njrst.com.cn
+版本控制管理工具
+集中式版本控制管理
+CVS
+分布式版本控制管理
+GIT
+unix 收费，不开源
+
+git最初是为了管理linux内核代码
+
+1.shell指令
+linux中文件夹也叫目录
+1)pwd,cd,ls
+pwd:print working directorty
+    打印当前所在的路径
+ls：显示当前目录中的所有非隐藏文件或者目录
+        蓝色表示可执行文件
+        白色表示文件
+        紫色表示目录
+        .ink 超链接，快捷方式
