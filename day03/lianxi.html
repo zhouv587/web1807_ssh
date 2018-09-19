@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app='app'>
+    <div ng-controller='ctr'>
+        <ul>
+            <li>这是字符串：{{string}}</li>
+            <li>这是数字：{{number}}</li>
+            <li>这是数组：{{arr}}</li>
+            <li>这是对象：{{obj}}</li>
+            <li>这是数组的第一个元素：{{arr[0]}}</li>
+            <li>这是对象下标为name的值：{{obj.name}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var app=angular.module('app',[]);
+    app.controller('ctr',['$scope',function($scope){
+        $scope.string='123456';
+        $scope.number=23;
+        $scope.arr=[1,2,3];
+        $scope.obj={name:'周赟',age:23,sex:'男'};
+    }])
+</script>
+</html>
