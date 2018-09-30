@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../Angularjs/angular.min.js'></script>
+</head>
+<style>
+    .bgc{
+        background: orange;
+    }
+</style>
+
+<body ng-app='app'>
+
+    <div ng-controller='ctrl'>
+        <ul>
+            <li>
+               <label>你的爱好:</label>   
+        <input type="checkbox" name='like'>唱歌
+        <input type="checkbox" name='like' checked>跳舞
+        <input type="checkbox" name='like'>讲笑话
+        
+            </li>
+            <li>
+             <img ng-src="{{path}}">
+            </li>
+        
+       <li>
+           <select ng-model='val'>
+               <option value="1">html</option>
+               <option value="2">css</option>
+               <option value="3">js</option>
+
+           </select>     
+       </li>
+       <li>
+           <ul ng-switch='val' type='none'>
+               <li ng-switch-when='1'>
+                   <ul>
+                        <li>html初级</li>
+                       <li>html中级</li>
+                       <li>html高级</li>
+
+                    </ul>
+               </li>
+               <li ng-switch-when='2'>
+                    <ul>
+                         <li>css初级</li>
+                        <li>css中级</li>
+                        <li>css高级</li>
+ 
+                     </ul>
+                </li>
+                <li ng-switch-when='3'>
+                        <ul>
+                             <li>js初级</li>
+                            <li>js中级</li>
+                            <li>js高级</li>
+     
+                         </ul>
+                    </li>
+           </ul>
+       </li>
+        <li ng-repeat='a in arr'>
+            <div ng-class='{bgc:$index==1}' ng-hide=''>{{a}}</div>
+        </li>
+               
+          </ul>      {{num}},{{str}},{{obj}},{{arr}},{{color}}
+    </div>
+
+</body>
+<script>
+    var app = angular.module('app', []);
+    app.controller('ctrl',['$scope',function($scope){
+        $scope.path='1.png';
+        $scope.num=23;
+        $scope.str='zhouyun';
+        $scope.obj={age:23,name:'zhouyun'};
+        $scope.arr=['zhou','yun','23'];
+        $scope.color=1;
+        
+
+
+    }])
+</script>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../Angularjs/angular.min.js'></script>
+    <script src="../../../第一阶段/04_jq_02/jq/jquery-1.9.1.min.js"></script>
+    <style>
+        #d1{
+            width: 300px;
+            height: 300px;
+            border:1px solid red;
+        }
+        .red{
+            background: red;
+        }
+        .blue{
+            background: blue;
+        }
+    </style>
+</head>
+
+<body ng-app='app'>
+    <div ng-controller='ctrl'>
+        <ul>
+            <li>
+                <button ng-click='fn()'>
+                单机
+                </button>
+            </li>
+            <li>
+                <div id='d1' ng-mouseenter='fun()' ng-class={red:color==1,blue:color==0} ng-mouseleave='fn1()'>
+                单机
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var app = angular.module('app', []);
+    app.controller('ctrl',['$scope',function($scope){
+
+        $scope.fn=function(){
+            alert('单机了');
+            
+        }
+        $scope.fn1=function(){
+            $scope.color=0;
+ 
+        }
+        $scope.fun=function(){
+            $scope.color=1;
+        }
+
+    }])
+</script>
+
+</html>

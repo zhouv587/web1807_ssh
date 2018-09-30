@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>音乐榜</title>
+	<script src='../Angularjs/angular.min.js'></script>
+	<script src='../Angularjs/angular-route.js'></script>
+
+</head>
+<body ng-app='music'>
+	<div class="music">
+	<!-- 导航栏 -->
+		<nav>
+			<a href="#/1">流行</a>
+			<a href="#/2">华语</a>
+			<a href="#/3">欧美</a>
+			<a href="#/4">日韩</a>
+		</nav>
+
+	</div>
+	 <div ng-view></div>  <!--占位符，用来显示数据的 -->
+	<script>
+		//创建模块,声明依赖关系
+		var music=angular.module('music',['ngRoute']);
+		music.controller('ctr',function($scope,$http,$routeParams){
+			var id=$routeParams.id;
+			// console.log(id);
+			$http({
+				url:'./api/list.php',
+				params:{id:id}
+			}).success(function(result){
+				$scope.music=result;
+				//筛选数据
+				// var music=[];用来保存符合条件的数据
+				// for(var i=0;i<result.length;i++){
+				// 	if(id==result[i].pid){
+				// 		music.push(result[i]);
+				// 	}
+				// }
+				// $scope.music=music;
+			});
+		});
+		music.config(function($routeProvider){
+			$routeProvider.when('/',{
+				redirectTo:'/1' //跳转到/1的路由
+			}).when('/:id',{
+				templateUrl:'./music_shuju.html',
+				controller:'ctr' //获取数据发送给视图页面解析
+			}).otherwise({
+				redirectTo:'/1'
+			})
+		});
+	</script>
+</body>
+</html>

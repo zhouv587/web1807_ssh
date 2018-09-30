@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../Angularjs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+    <div ng-controller='ctr1'>
+        <ul>
+            <li>{{da|date:'yyyy/mm/dd'}}</li>
+        </ul>
+        <li>
+           {{money|currency:'￥'}}
+        </li>
+        <li>{{obj.name}}</li>
+        <li>filter过滤器：{{arr |filter:'4'}}</li>
+        <li>limtiTO过滤器：{{arr|limitTo:4}}</li>
+        <li>number：{{number|number}}</li>
+        <li>number：{{number|number:'2'}}</li>
+        <li>number：{{number|number:'-1'}}</li>
+        <li>orderBy:{{arr|orderBy:true:truetruy7}}</li>
+        <li>orderBy:{{arr2|orderBy:['age','id']}}</li>
+        <li ng-repeat='n in arr'>{{n|filter:'z'}}</li>
+
+
+    </div>
+
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('ctr1',['$scope',function($scope){
+        $scope.message='南京第一帅：周赟';
+        $scope.da=new Date();
+        $scope.money=25;
+        $scope.obj=new Object();
+        $scope.obj.name='张三';
+        $scope.obj.age=23;
+        $scope.arr=['zh','zy','zhou','edc','aw','asdf'];
+        $scope.number=4185435;
+
+        $scope.arr2=[
+           {id:'zhouyun5',age:25},
+           {id:'zhouyun2',age:26},
+           {id:'zhouyun3',age:23},
+           {id:'zhouyun4',age:24}
+
+        ];
+
+    }]);
+</script>
+
+</html>

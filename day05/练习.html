@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../Angularjs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+    <div ng-controller='ctr1'>
+        <ul>
+            <li>
+                 <input type="text" ng-model='input'>
+                
+                 <div>{{input|lowercase}}</div> 
+                 <div>{{input|uppercase}}</div>
+
+            </li>
+
+            <li>{{str|limitTo:5|uppercase}}</li>
+            <li><input type="text" ng-model='msg'>
+               <div>{{msg|number:1}}</div> 
+            </li>
+            <li>{{data|date:'yyyy年MM月dd日hh时mm分ss秒'}}</li>
+            <li>{{arr|orderBy:'id'}}</li>
+            <li>{{arr|orderBy:'-id'}}</li>
+            <li>{{arr|orderBy:['-age','+id']}}</li>
+            <li>{{arr|filter:{name:'a'} }}</li>
+
+
+
+        </ul>
+
+    </div>
+</body>
+<script>
+    var app = angular.module('app', []);
+    app.controller('ctr1',['$scope',function($scope){
+        $scope.arr=[
+                    {id:101,name:"Mike",age:22,grade:'a'},
+                    {id:103,name:"Jack",age:22,grade:'b'},
+                    {id:105,name:"Rose",age:24,grade:'c'},
+                    {id:102,name:"Allen",age:24,grade:'a'},
+                    {id:104,name:"Lily",age:22,grade:'b'}
+                   ];
+         $scope.data=new Date();
+         $scope.str='abcdefg';
+    }]);
+    app.filter('reverse', function() { //可以注入依赖
+    return function(text) {
+        return text.split("").reverse().join("");
+    }
+});
+   
+</script>
+
+</html>

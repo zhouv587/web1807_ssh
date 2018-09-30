@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../Angularjs/angular.min.js'></script>
+    <script src='../Angularjs/angular-route.js'></script>
+
+</head>
+
+<body ng-app='app'>
+    <a href="#/1">首页</a>
+    <a href="#/2">信息页</a>
+    <a href="#/3">错误页</a>
+    <div ng-view></div>
+
+</body>
+<script>
+    var app = angular.module('app', ['ngRoute']);
+    app.controller('ctr',function($scope){
+        $scope.stu=[
+    {"id":101,"name":"jack","sex":"M"},
+    {"id":102,"name":"jack2","sex":"w"},
+    {"id":103,"name":"jack3","sex":"M"},
+    {"id":104,"name":"jack4","sex":"w"},
+    {"id":105,"name":"jack5","sex":"M"}
+];
+    });
+    app.config(['$routeProvider',function($routeProvider){
+            $routeProvider.when('/1',{
+                template:'这是首页'})
+            .when('/2',{
+                templateUrl:'./show.html',
+                controller:'ctr'
+            }).when('/3',{
+                template:'错误信息，<a href="#/1">点击返回</a>'
+            }).when('/',{
+                template:'南京第一帅:周赟'
+            })
+    }]);
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../Angularjs/angular.min.js'></script>
+</head>
+ <!-- ng-repeat='key in b' -->
+<body ng-app='app'>
+    <div ng-controller='ctr'>
+        <button ng-click='fun()'>点击按钮</button>
+
+
+    </div>
+</body>
+<script>
+    var app = angular.module('app', []);
+    app.controller('ctr',function($scope,$interval){ 
+        var i=0;
+
+
+        $scope.fun=function(){
+           
+               id=$interval(function(){
+               document.write('中奖号码     '+Math.floor(Math.random()*100)+1+'<br>');
+               i++;
+               if(i==5) $interval.cancel(id);
+           },1000);
+           
+        
+           
+        
+        }
+    });
+</script>
+
+</html>

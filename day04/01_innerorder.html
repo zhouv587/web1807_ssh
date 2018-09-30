@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta harset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <style>
+        #d{
+            border:1px solid red;
+            background-color:aqua;
+            width: 300px;
+            height: 300px;
+        }
+        .d1{
+            border:1px solid orange;
+           
+            width: 300px;
+            height: 300px;
+        }
+        #d2{
+            border:1px solid red;
+   
+            width: 300px;
+            height: 300px;
+        }
+        .black{
+            background:black;
+        }
+        .blue{
+            background:blue;
+        }
+
+    </style>
+   
+</head>
+
+<body ng-app='app'>
+<div ng-controller='crtl'>
+<ul>
+    <li ng-show='isShow'>这是show的</li>
+    <li>这是ng-hide</li>
+    <li ng-if='false'>这是ng-if</li>
+    <li>{{msg}}</li>
+    <li ng-bind='msg'>这是ng-if</li>
+    <li>
+       <label> <input type="radio" name="gender" value="M" checked>男</label>
+       <label> <input type="radio" name="gender" value="w">女</label>
+       <!-- ng-repeat会出错，添加该语句，可以避免出错 -->
+
+       <!-- <li ng-repeat='(k,stu) in stus track by $index'>{{k}}.{{stu}}</li>
+
+    </li> -->
+       <li ng-repeat='stu in stus track by $index'>{{$index}}.{{stu}}</li>
+
+    </li>
+    <li>
+        <div id='d' ng-class="{d1:color=='red'}"></div>
+        <div id='d2' ng-class="{black:true,blue:color==2}"></div>
+    </li>
+    <li>
+        <select ng-model='val'>
+                <option value="1">html</option>
+                <option value="2">css</option>
+                <option value="3">js</option>
+
+        </select>
+    </li>
+    <li>
+        <ul ng-switch='val'>
+            <li ng-switch-when='1'>html的内容</li>
+            <li ng-switch-when='2'>css的内容</li>
+            <li ng-switch-when='3'>js的内容</li>
+
+        </ul>
+    </li>
+
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+ <script src='../Angularjs/angular.min.js'></script>
+</body>
+<script>
+    var app = angular.module('app', []);
+    app.controller('crtl',['$scope',function($scope){
+        $scope.isShow=false;
+        $scope.msg='模型层绑定的数据';
+        $scope.stus=['zhouy','sadf','naje'];
+        $scope.color=1;
+        
+    }]);
+</script>
+
+</html>

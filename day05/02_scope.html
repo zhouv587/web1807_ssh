@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../Angularjs/angular.min.js'></script>
+</head>
+
+<body ng-app='app' ng-init='global="全局"'>
+    <div>控制器外调用sex：{{sex}}</div>
+    <div ng-controller='ctr1' ng-init='age=23'>
+        控制器1 <br>
+    <div>控制器外调用sex：{{sex}}</div>
+        <div>name:{{name}}</div>
+        <div>age:{{age}}</div>
+        <div>global:{{global}}</div>
+    </div>
+    <div ng-controller='ctr2' ng-init='age=45'>
+        控制器2 <br>
+        <div>控制器外调用sex：{{sex}}</div>
+        <div>name:{{name}}</div>
+        <div>age:{{age}}</div>
+        <div>global:{{global}}</div>
+        <button ng-click='change()'>性别切换为男</button>
+
+    </div>
+</body>
+<script>
+    var app = angular.module('app', []);
+    app.controller('ctr1',['$scope','$rootScope',function($scope,$rootScope){
+        $scope.name='张三';
+        $rootScope.sex='女';
+    }]);
+    app.controller('ctr2',['$scope','$rootScope',function($scope,$rootScope){
+        $scope.name='李四';
+        // $scope.sex='男';
+        $scope.change=function(){
+            $rootScope.sex='男';
+        }
+        
+    }]);
+</script>
+
+</html>

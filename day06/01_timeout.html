@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../Angularjs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+<div ng-controller='ctr'>
+<div>timeout:{{show}}</div>
+<div>时间:{{result}}</div>
+<div>当前时间:{{data|date:'yyyy-MM-dd HH:mm:ss'}}</div>
+<div><button ng-click=star()>开始计时</button></div>
+
+
+
+
+
+
+</div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('ctr',function($scope,$timeout,$interval){
+        var id=0,flag=0;
+        $scope.star=function(){
+            //清除上一次生成的id
+            if(flag==0){
+                $interval.cancel(id);
+            id=$interval(function(){
+            $scope.data=new Date();
+            },1000) 
+         flag=1; 
+        }
+        else{
+                 $interval.cancel(id);
+            }
+        
+        };
+        
+
+        $scope.stop=function(){
+            console.log(id);
+          //  clearInterval(id);  这个方法无效，需要用angularjs封装的方法来停止
+         
+
+
+        //$timeout是一个一次性计时器
+        var a=0;
+        $interval(function(){
+            $scope.result=a++;
+
+        },1000);
+        $timeout(function(){
+
+            $scope.show='时间到了，数据可以显示';
+        },3000);
+
+    });
+</script>
+
+</html>
